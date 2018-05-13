@@ -1,6 +1,6 @@
 name: kube-prompt-latest
 version: "latest"
-summary: An interactive kubernetes client featuring auto-complete using go-prompt.
+summary: Master branch build for an interactive kubernetes client featuring auto-complete using go-prompt.
 description: |
   An interactive kubernetes client featuring auto-complete using go-prompt.
   https://github.com/c-bata/kube-prompt

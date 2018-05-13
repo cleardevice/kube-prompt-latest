@@ -1,0 +1,30 @@
+name: kube-prompt-latest
+version: "latest"
+summary: An interactive kubernetes client featuring auto-complete using go-prompt.
+description: |
+  An interactive kubernetes client featuring auto-complete using go-prompt.
+  https://github.com/c-bata/kube-prompt
+architectures: [amd64]
+grade: stable
+confinement: strict
+
+parts:
+  kube-prompt-latest:
+    plugin: dump
+    source: https://github.com/c-bata/kube-prompt.git
+    source-type: git
+    build-packages: [golang-go,go-dep]
+    override-build: |
+      cd ..
+      export GOPATH=$(pwd) 
+      rm -rf src
+      mkdir -p src/kube-prompt
+      mv build/* src/kube-prompt
+      cd src/kube-prompt
+      dep ensure
+      go build .
+      mv kube-prompt ../../install
+
+apps:
+  kube-prompt-latest:
+    command: kube-prompt
